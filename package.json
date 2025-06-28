@@ -1,9 +1,9 @@
 {
-  "name": "balancer-v2-pools-atq-module",
+  "name": "beethovenx-optimism-atq-module",
   "version": "1.0.1",
   "main": "main.mjs",
   "type": "module",
-  "author": "gmkung <guangmian@gmail.com>",
+  "author": "birlpossum",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
