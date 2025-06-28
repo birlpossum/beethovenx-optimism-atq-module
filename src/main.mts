@@ -8,10 +8,10 @@ const SUBGRAPH_URLS: Record<string, { decentralized: string }> = {
     decentralized:
       "https://gateway-arbitrum.network.thegraph.com/api/[api-key]/deployments/id/QmQ5TT2yYBZgoUxsat3bKmNe5Fr9LW9YAtDs8aeuc1BRhj",
   },
-  //Optimism
+  // Beethoven X Optimism
   "10": {
     decentralized:
-      "https://gateway-arbitrum.network.thegraph.com/api/[api-key]/deployments/id/QmWUgkiUM5c3BW1Z51DUkZfnyQfyfesE8p3BRnEtA9vyPL",
+      "https://gateway.thegraph.com/api/[api-key]/subgraphs/id/F5jeL2nMXZt5LU6kSway7Vi2PTUcqDbw1gMQEbrmiVdJ",
   },
   //Gnosis
   "100": {
@@ -152,6 +152,10 @@ function containsHtmlOrMarkdown(text: string): boolean {
 }
 
 // Local helper function used by returnTags
+// Beethoven X config for easy reuse
+const BEETHOVEN_X_PROJECT_NAME = "Beethoven X";
+const BEETHOVEN_X_UI_LINK = "https://beets.fi";
+
 function transformPoolsToTags(chainId: string, pools: Pool[]): ContractTag[] {
   const validPools: Pool[] = [];
 
@@ -180,18 +184,14 @@ function transformPoolsToTags(chainId: string, pools: Pool[]): ContractTag[] {
 
   return validPools.map((pool) => {
     const maxSymbolsLength = 45;
-    //const symbolsText = pool.tokens.map((t) => t.symbol).join("/");
     const truncatedSymbolsText = truncateString(pool.symbol, maxSymbolsLength);
+    const tokenSymbols = pool.tokens.map((t) => t.symbol).join(" / ");
     return {
       "Contract Address": `eip155:${chainId}:${pool.address}`,
       "Public Name Tag": `${truncatedSymbolsText} Pool`,
-      "Project Name": "Balancer v2",
-      "UI/Website Link": "https://balancer.fi",
-      "Public Note": `A Balancer v2 '${camelCaseToSpaced(
-        pool.poolType
-      )}' pool with the tokens: ${pool.tokens
-        .map((t) => t.name + " (symbol: " + t.symbol + ")")
-        .join(", ")}.`,
+      "Project Name": BEETHOVEN_X_PROJECT_NAME,
+      "UI/Website Link": BEETHOVEN_X_UI_LINK,
+      "Public Note": `The liquidity pool contract on Beethoven X using Balancer v2 architecture for the ${tokenSymbols} pool.`,
     };
   });
 }
