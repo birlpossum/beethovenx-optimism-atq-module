@@ -13,11 +13,11 @@ To set up the submodule for development, follow these steps:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/gmkung/BeethovenX-Optimism-atq-module
+   git clone https://github.com/birlpossum/beethovenx-optimism-atq-module
    ```
 2. Navigate into the repository directory:
 
-`cd your-submodule-repo`
+`cd beethovenx-optimism-atq-module`
 
 Install the dependencies:
 
